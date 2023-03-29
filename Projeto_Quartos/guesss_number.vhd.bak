@@ -1,0 +1,39 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.NUMERIC_STD.all;
+
+entity guesss_number is
+	port(clk			: in  std_logic;
+		  freq      : in std_logic;
+		  count     : in std_logic;
+		  done      : in std_logic_vector(1 downto 0);
+		  leds_out	: out std_logic_vector(7 downto 0);
+		  textOut   : out std_logic_vector(55 downto 0); -- 8*5 segundo o guião não percebi?
+		  activate  : out std_logic;
+		  selector  : out std_logic;
+		  enable    : out std_logic_vector(2 downto 0)); -- este pelo guiao tem de ser 3 bits para depois meter a piscar 
+end guesss_number;
+
+ 
+ architecture Behavioral of guesss_number is
+	type Tstate is (S0, S1, S2, S3, S4, S5);
+	
+	signal s_currentState, s_nextState	: Tstate;
+	signal count 
+	
+begin
+	if(rising_edge(clk)) then 
+		s_currentState <= s_nextState;
+	end if;
+	
+	state_proc : process(s_currentState)
+	begin 
+		case(s_currentState) is 
+		when S0 =>
+			if (rising_edge(clk)) then 
+				
+			
+			
+			
+		
+		

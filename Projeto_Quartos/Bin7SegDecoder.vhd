@@ -1,0 +1,43 @@
+-- Projecto Guess number 
+-- Miguel Gomes e Rodrigo Pires
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity Bin7SegDecoder is
+	port( enable : in std_logic;
+			binInput	: in  std_logic_vector(4 downto 0);
+		  decOut_n	: out std_logic_vector(6 downto 0));
+end Bin7SegDecoder;
+
+architecture Behavioral of Bin7SegDecoder is	
+begin
+	with binInput select
+		decOut_n <= "1111001" when "00001",	--1
+						"0100100" when "00010",	--2
+						"0110000" when "00011",	--3
+						"0011001" when "00100",	--4
+						"0010010" when "00101",	--5
+						"0000010" when "00110",	--6
+						"1111000" when "00111",	--7
+						"0000000" when "01000",	--8
+						"0010000" when "01001",	--9
+						"0001000" when "01010",	--A
+						"0000110" when "01011",	--E
+						"1111001" when "01100",	--I
+						"1000000" when "01101",	--O
+						"1000001" when "01110",	--U
+						"1000110" when "01111",	--C
+						"0000010" when "10000",	--G
+						"1000111" when "10001",	--L
+						"0001100" when "10010",	--P
+						"0101111" when "10011",	--r
+						"0000111" when "10100",	--t
+						"0001001" when "10101",	--H
+						"1110111" when "10110",	--_
+						"0110111" when "10111",	--=
+						"0101011" when "11000",	--n
+						"0010010" when "11001",	--S
+						"1000000" when "00000",	--0
+						"1111111" when others; -- nada
+end Behavioral;

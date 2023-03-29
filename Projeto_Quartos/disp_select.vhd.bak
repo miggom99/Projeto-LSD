@@ -1,0 +1,50 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.NUMERIC_STD.all;
+
+entity disp_select is
+	port( d7 : in std_logic_vector(3 downto 0);
+			d6 : in std_logic_vector(3 downto 0);
+			d5 : in std_logic_vector(3 downto 0);
+			d4 : in std_logic_vector(3 downto 0);
+	     sel : in std_logic;
+	   enable: in std_logic_vector(3 downto 0);
+	   textin: in std_logic_vector(39 downto 0);
+		binout: out std_logic_vector(3 downto 0);
+	enableout: out std_logic_vector(3 downto 0)); 
+end disp_select;
+
+architecture Behavioral of disp_select is
+
+begin
+
+	process(sel, enable)
+		begin
+		if(sel = '0') then
+			if(enable(0) = '1') then
+				binout(7) <= textin(4 downto 0);
+				binout(6) <= textin(9 downto 5);
+				binout(5) <= textin(14 downto 10);
+				binout(4) <= textin(19 downto 15);
+				binout(3) <= textin(24 downto 20);
+				binout(2) <= textin(29 downto 25);
+				binout(1) <= textin(34 downto 30);
+				binout(0) <= textin(39 downto 35);
+				else
+				binout <= "11111111";
+			end if;
+		end if;
+	end process;
+end Behavioral;
+
+	
+			
+				
+				
+	
+		
+
+
+
+
+

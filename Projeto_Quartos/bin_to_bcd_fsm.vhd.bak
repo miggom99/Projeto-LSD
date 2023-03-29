@@ -1,0 +1,101 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+ entity bin_to_bcd_fsm is
+ port ( -- bin_input = 10 * digit1 + digit0
+	bin_input : in std_logic_vector(6 downto 0);
+	activate  : in std_logic;
+	digit1    : out std_logic_vector(3 downto 0);
+	digit0    : out std_logic_vector(3 downto 0);
+	done      : out std_logic);
+ end bin_to_bcd_fsm;
+ 
+ architecture Behavioral of bin_to_bcd_fsm is
+	type Tsate is (IDLE, subtrai50, subtrai20, subtrai10, finish);
+	
+	signal s_currentState, s_nextState	: TState := IDLE;
+	
+	signal s_num std_logic_vector (6 downto 0);
+	
+	process(bin_input)
+	begin 
+		if (bin_input /= "0000000") then 
+			s_currentState <= s_nextState
+		end if;
+	end process;
+		
+	state_proc : process(s_currentState, activate, s_dnum)
+	begin
+		case(s_currentState) is
+		when IDLE => 
+			digit0 <= "0000";
+			digit1 <= "0000";
+			done <= '0';
+			s_dnum <= bin_input;
+			
+			if (activate = '0') then 
+				s_nextState <= IDLE;
+			else
+				if(s_dnum >= "0110010") then
+					s_nextState <= subtrai50;
+				elsif(s_dnum >= "0010100") then
+					s_nextState <= subtrai20;
+				elsif(s_dnum >= "0001010") then 
+					s_nextState <= subtrai10;
+				else 
+					digit0 <= s_dnum(3 downto 0);
+					s_nextState <= finish;
+				end if;
+			end if;
+		
+		when subtrai50 =>
+			
+			digit0 <= "0000";
+			digit1 <= "0101";
+			done <= '0';
+			s_dnum <= s_dnum - "0110010";
+			
+			if(s_dnum >= "0010100") then
+				s_nextState <= subtrai20;
+			elsif(s_dnum >= "0001010") then 
+				s_nextState <= subtrai10;
+			else 
+				s_nextState <= finish;
+			end if;
+				
+		when subtrai20 =>
+			
+			digit0 = "0000";
+			digit1 = digit1 + "0010";
+			done <= '0';
+			s_dnum <= s_dnum - "0010100";
+			
+			if(s_dnum >= "0010100") then
+				s_nextState <= subtrai20;
+			elsif(s_dnum >= "0001010") then 
+				s_nextState <= subtrai10;
+			else 
+				s_nextState <= finish;
+			end if:
+		
+		when subtrai10 =>
+			
+			digit0 = "0000";
+			digit1 = digit1 + "0001";
+			done <= '0';
+			s_nextState <= finish;
+		
+		when finish =>
+			
+			digit0 <= s_dnum(3 downto 0);
+			digit1 <= digit1 ;
+			done <= '1';
+			s_nextState <= IDLE;
+		end case;
+	end process
+end Behavioral;
+			
+			
+		
+			
+	

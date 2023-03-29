@@ -1,0 +1,27 @@
+
+State Machine - |guess_final|bin_to_bcd_fsm:bin_to_bcd1|s_State
+Name s_State.finish s_State.subtrai10 s_State.subtrai20 s_State.subtrai50 s_State.IDLE 
+s_State.IDLE 0 0 0 0 0 
+s_State.subtrai50 0 0 0 1 1 
+s_State.subtrai20 0 0 1 0 1 
+s_State.subtrai10 0 1 0 0 1 
+s_State.finish 1 0 0 0 1 
+
+State Machine - |guess_final|bin_to_bcd_fsm:bin_to_bcd0|s_State
+Name s_State.finish s_State.subtrai10 s_State.subtrai20 s_State.subtrai50 s_State.IDLE 
+s_State.IDLE 0 0 0 0 0 
+s_State.subtrai50 0 0 0 1 1 
+s_State.subtrai20 0 0 1 0 1 
+s_State.subtrai10 0 1 0 0 1 
+s_State.finish 1 0 0 0 1 
+
+State Machine - |guess_final|guesss_number:guess_number|s_currentState
+Name s_currentState.cheater s_currentState.equals s_currentState.lo_state s_currentState.hi_state s_currentState.escolha s_currentState.check s_currentState.rotate s_currentState.start 
+s_currentState.start 0 0 0 0 0 0 0 0 
+s_currentState.rotate 0 0 0 0 0 0 1 1 
+s_currentState.check 0 0 0 0 0 1 0 1 
+s_currentState.escolha 0 0 0 0 1 0 0 1 
+s_currentState.hi_state 0 0 0 1 0 0 0 1 
+s_currentState.lo_state 0 0 1 0 0 0 0 1 
+s_currentState.equals 0 1 0 0 0 0 0 1 
+s_currentState.cheater 1 0 0 0 0 0 0 1 

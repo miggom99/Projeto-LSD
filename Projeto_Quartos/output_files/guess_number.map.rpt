@@ -1,0 +1,1281 @@
+Analysis & Synthesis report for guess_number
+Wed Jun 23 10:26:14 2021
+Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |guess_final|bin_to_bcd_fsm:bin_to_bcd1|s_State
+  9. State Machine - |guess_final|bin_to_bcd_fsm:bin_to_bcd0|s_State
+ 10. State Machine - |guess_final|guesss_number:guess_number|s_currentState
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Parameter Settings for User Entity Instance: freqdivider:freq_div1hz
+ 17. Parameter Settings for User Entity Instance: freqdivider:freq_div2hz
+ 18. Parameter Settings for User Entity Instance: freqdivider:freq_div4hz
+ 19. Parameter Settings for User Entity Instance: freqdivider:freq_div8hz
+ 20. Parameter Settings for User Entity Instance: Debouncer:Debouncer0
+ 21. Parameter Settings for User Entity Instance: Debouncer:Debouncer1
+ 22. Parameter Settings for User Entity Instance: Debouncer:Debouncer2
+ 23. Parameter Settings for User Entity Instance: Debouncer:Debouncer3
+ 24. Parameter Settings for User Entity Instance: pseudo_random_generator:rnd_08_gen
+ 25. Parameter Settings for User Entity Instance: pseudo_random_generator:rnd_led_gen
+ 26. Port Connectivity Checks: "Bin7SegDecoder:bin7seg0"
+ 27. Port Connectivity Checks: "Bin7SegDecoder:bin7seg1"
+ 28. Port Connectivity Checks: "Bin7SegDecoder:bin7seg2"
+ 29. Port Connectivity Checks: "Bin7SegDecoder:bin7seg3"
+ 30. Port Connectivity Checks: "Bin7SegDecoder:bin7seg4"
+ 31. Port Connectivity Checks: "Bin7SegDecoder:bin7seg5"
+ 32. Port Connectivity Checks: "Bin7SegDecoder:bin7seg6"
+ 33. Port Connectivity Checks: "Bin7SegDecoder:bin7seg7"
+ 34. Port Connectivity Checks: "pseudo_random_generator:rnd_led_gen"
+ 35. Port Connectivity Checks: "pseudo_random_generator:rnd_08_gen"
+ 36. Post-Synthesis Netlist Statistics for Top Partition
+ 37. Elapsed Time Per Partition
+ 38. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Jun 23 10:26:14 2021       ;
+; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
+; Revision Name                      ; guess_number                                ;
+; Top-level Entity Name              ; guess_final                                 ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 1,901                                       ;
+;     Total combinational functions  ; 1,862                                       ;
+;     Dedicated logic registers      ; 1,020                                       ;
+; Total registers                    ; 1020                                        ;
+; Total pins                         ; 90                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                                      ; guess_final        ; guess_number       ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                              ; Enable             ; Enable             ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                                        ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                               ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                        ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------+---------+
+; guess_final.vhd                  ; yes             ; User VHDL File  ; C:/QuartosLsd/projfinal/guess_final.vhd             ;         ;
+; disp_select.vhd                  ; yes             ; User VHDL File  ; C:/QuartosLsd/projfinal/disp_select.vhd             ;         ;
+; bin_to_bcd_fsm.vhd               ; yes             ; User VHDL File  ; C:/QuartosLsd/projfinal/bin_to_bcd_fsm.vhd          ;         ;
+; guesss_number.vhd                ; yes             ; User VHDL File  ; C:/QuartosLsd/projfinal/guesss_number.vhd           ;         ;
+; Bin7SegDecoder.vhd               ; yes             ; User VHDL File  ; C:/QuartosLsd/projfinal/Bin7SegDecoder.vhd          ;         ;
+; freqdivider.vhd                  ; yes             ; User VHDL File  ; C:/QuartosLsd/projfinal/freqdivider.vhd             ;         ;
+; Debouncer.vhd                    ; yes             ; User VHDL File  ; C:/QuartosLsd/projfinal/Debouncer.vhd               ;         ;
+; pseudo_random_generator.vhd      ; yes             ; User VHDL File  ; C:/QuartosLsd/projfinal/pseudo_random_generator.vhd ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimated Total logic elements              ; 1,901          ;
+;                                             ;                ;
+; Total combinational functions               ; 1862           ;
+; Logic element usage by number of LUT inputs ;                ;
+;     -- 4 input functions                    ; 1002           ;
+;     -- 3 input functions                    ; 191            ;
+;     -- <=2 input functions                  ; 669            ;
+;                                             ;                ;
+; Logic elements by mode                      ;                ;
+;     -- normal mode                          ; 1319           ;
+;     -- arithmetic mode                      ; 543            ;
+;                                             ;                ;
+; Total registers                             ; 1020           ;
+;     -- Dedicated logic registers            ; 1020           ;
+;     -- I/O registers                        ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 90             ;
+;                                             ;                ;
+; Embedded Multiplier 9-bit elements          ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 1020           ;
+; Total fan-out                               ; 8628           ;
+; Average fan-out                             ; 2.82           ;
++---------------------------------------------+----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                             ;
++------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------+-------------------------+--------------+
+; Compilation Hierarchy Node               ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                              ; Entity Name             ; Library Name ;
++------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------+-------------------------+--------------+
+; |guess_final                             ; 1862 (0)            ; 1020 (0)                  ; 0           ; 0            ; 0       ; 0         ; 90   ; 0            ; |guess_final                                     ; guess_final             ; work         ;
+;    |Bin7SegDecoder:bin7seg0|             ; 20 (20)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|Bin7SegDecoder:bin7seg0             ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:bin7seg1|             ; 18 (18)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|Bin7SegDecoder:bin7seg1             ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:bin7seg2|             ; 19 (19)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|Bin7SegDecoder:bin7seg2             ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:bin7seg3|             ; 20 (20)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|Bin7SegDecoder:bin7seg3             ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:bin7seg4|             ; 18 (18)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|Bin7SegDecoder:bin7seg4             ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:bin7seg5|             ; 18 (18)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|Bin7SegDecoder:bin7seg5             ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:bin7seg6|             ; 18 (18)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|Bin7SegDecoder:bin7seg6             ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:bin7seg7|             ; 18 (18)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|Bin7SegDecoder:bin7seg7             ; Bin7SegDecoder          ; work         ;
+;    |Debouncer:Debouncer0|                ; 69 (69)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|Debouncer:Debouncer0                ; Debouncer               ; work         ;
+;    |Debouncer:Debouncer1|                ; 69 (69)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|Debouncer:Debouncer1                ; Debouncer               ; work         ;
+;    |Debouncer:Debouncer2|                ; 69 (69)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|Debouncer:Debouncer2                ; Debouncer               ; work         ;
+;    |Debouncer:Debouncer3|                ; 69 (69)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|Debouncer:Debouncer3                ; Debouncer               ; work         ;
+;    |bin_to_bcd_fsm:bin_to_bcd0|          ; 84 (84)             ; 33 (33)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|bin_to_bcd_fsm:bin_to_bcd0          ; bin_to_bcd_fsm          ; work         ;
+;    |bin_to_bcd_fsm:bin_to_bcd1|          ; 84 (84)             ; 33 (33)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|bin_to_bcd_fsm:bin_to_bcd1          ; bin_to_bcd_fsm          ; work         ;
+;    |disp_select:disp_select|             ; 40 (40)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|disp_select:disp_select             ; disp_select             ; work         ;
+;    |freqdivider:freq_div1hz|             ; 57 (57)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|freqdivider:freq_div1hz             ; freqdivider             ; work         ;
+;    |freqdivider:freq_div2hz|             ; 55 (55)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|freqdivider:freq_div2hz             ; freqdivider             ; work         ;
+;    |freqdivider:freq_div4hz|             ; 56 (56)             ; 27 (27)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|freqdivider:freq_div4hz             ; freqdivider             ; work         ;
+;    |freqdivider:freq_div8hz|             ; 56 (56)             ; 28 (28)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|freqdivider:freq_div8hz             ; freqdivider             ; work         ;
+;    |guesss_number:guess_number|          ; 525 (525)           ; 272 (272)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|guesss_number:guess_number          ; guesss_number           ; work         ;
+;    |pseudo_random_generator:rnd_08_gen|  ; 432 (432)           ; 405 (405)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|pseudo_random_generator:rnd_08_gen  ; pseudo_random_generator ; work         ;
+;    |pseudo_random_generator:rnd_led_gen| ; 48 (48)             ; 60 (60)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |guess_final|pseudo_random_generator:rnd_led_gen ; pseudo_random_generator ; work         ;
++------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------+-------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------+
+; State Machine - |guess_final|bin_to_bcd_fsm:bin_to_bcd1|s_State                                               ;
++-------------------+----------------+-------------------+-------------------+-------------------+--------------+
+; Name              ; s_State.finish ; s_State.subtrai10 ; s_State.subtrai20 ; s_State.subtrai50 ; s_State.IDLE ;
++-------------------+----------------+-------------------+-------------------+-------------------+--------------+
+; s_State.IDLE      ; 0              ; 0                 ; 0                 ; 0                 ; 0            ;
+; s_State.subtrai50 ; 0              ; 0                 ; 0                 ; 1                 ; 1            ;
+; s_State.subtrai20 ; 0              ; 0                 ; 1                 ; 0                 ; 1            ;
+; s_State.subtrai10 ; 0              ; 1                 ; 0                 ; 0                 ; 1            ;
+; s_State.finish    ; 1              ; 0                 ; 0                 ; 0                 ; 1            ;
++-------------------+----------------+-------------------+-------------------+-------------------+--------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------+
+; State Machine - |guess_final|bin_to_bcd_fsm:bin_to_bcd0|s_State                                               ;
++-------------------+----------------+-------------------+-------------------+-------------------+--------------+
+; Name              ; s_State.finish ; s_State.subtrai10 ; s_State.subtrai20 ; s_State.subtrai50 ; s_State.IDLE ;
++-------------------+----------------+-------------------+-------------------+-------------------+--------------+
+; s_State.IDLE      ; 0              ; 0                 ; 0                 ; 0                 ; 0            ;
+; s_State.subtrai50 ; 0              ; 0                 ; 0                 ; 1                 ; 1            ;
+; s_State.subtrai20 ; 0              ; 0                 ; 1                 ; 0                 ; 1            ;
+; s_State.subtrai10 ; 0              ; 1                 ; 0                 ; 0                 ; 1            ;
+; s_State.finish    ; 1              ; 0                 ; 0                 ; 0                 ; 1            ;
++-------------------+----------------+-------------------+-------------------+-------------------+--------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |guess_final|guesss_number:guess_number|s_currentState                                                                                                                                                      ;
++-------------------------+------------------------+-----------------------+-------------------------+-------------------------+------------------------+----------------------+-----------------------+----------------------+
+; Name                    ; s_currentState.cheater ; s_currentState.equals ; s_currentState.lo_state ; s_currentState.hi_state ; s_currentState.escolha ; s_currentState.check ; s_currentState.rotate ; s_currentState.start ;
++-------------------------+------------------------+-----------------------+-------------------------+-------------------------+------------------------+----------------------+-----------------------+----------------------+
+; s_currentState.start    ; 0                      ; 0                     ; 0                       ; 0                       ; 0                      ; 0                    ; 0                     ; 0                    ;
+; s_currentState.rotate   ; 0                      ; 0                     ; 0                       ; 0                       ; 0                      ; 0                    ; 1                     ; 1                    ;
+; s_currentState.check    ; 0                      ; 0                     ; 0                       ; 0                       ; 0                      ; 1                    ; 0                     ; 1                    ;
+; s_currentState.escolha  ; 0                      ; 0                     ; 0                       ; 0                       ; 1                      ; 0                    ; 0                     ; 1                    ;
+; s_currentState.hi_state ; 0                      ; 0                     ; 0                       ; 1                       ; 0                      ; 0                    ; 0                     ; 1                    ;
+; s_currentState.lo_state ; 0                      ; 0                     ; 1                       ; 0                       ; 0                      ; 0                    ; 0                     ; 1                    ;
+; s_currentState.equals   ; 0                      ; 1                     ; 0                       ; 0                       ; 0                      ; 0                    ; 0                     ; 1                    ;
+; s_currentState.cheater  ; 1                      ; 0                     ; 0                       ; 0                       ; 0                      ; 0                    ; 0                     ; 1                    ;
++-------------------------+------------------------+-----------------------+-------------------------+-------------------------+------------------------+----------------------+-----------------------+----------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                       ;
++-----------------------------------------------------------+--------------------------------------------------------------+
+; Register name                                             ; Reason for Removal                                           ;
++-----------------------------------------------------------+--------------------------------------------------------------+
+; guesss_number:guess_number|rnd_attempt[7..31]             ; Stuck at GND due to stuck port data_in                       ;
+; guesss_number:guess_number|textOut_s2[1,2,4,5,9,16,17,19] ; Stuck at VCC due to stuck port data_in                       ;
+; guesss_number:guess_number|textOut_s2[3,8,15,18]          ; Merged with guesss_number:guess_number|textOut_s2[0]         ;
+; guesss_number:guess_number|textOut_s2[7]                  ; Merged with guesss_number:guess_number|textOut_s2[12]        ;
+; guesss_number:guess_number|textOut_s2[6,11,14]            ; Merged with guesss_number:guess_number|textOut_s2[10]        ;
+; pseudo_random_generator:rnd_led_gen|state_09[22]          ; Merged with pseudo_random_generator:rnd_08_gen|state_09[22]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[35]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[35]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[20]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[20]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[3]           ; Merged with pseudo_random_generator:rnd_08_gen|state_08[3]   ;
+; pseudo_random_generator:rnd_led_gen|state_08[24]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[24]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[14]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[14]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[5]           ; Merged with pseudo_random_generator:rnd_08_gen|state_08[5]   ;
+; pseudo_random_generator:rnd_led_gen|state_08[40]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[40]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[47]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[47]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[31]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[31]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[1]           ; Merged with pseudo_random_generator:rnd_08_gen|state_07[1]   ;
+; pseudo_random_generator:rnd_led_gen|state_07[35]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[35]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[28]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[28]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[20]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[20]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[45]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[45]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[40]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[40]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[9]           ; Merged with pseudo_random_generator:rnd_08_gen|state_07[9]   ;
+; pseudo_random_generator:rnd_led_gen|state_07[12]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[12]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[5]           ; Merged with pseudo_random_generator:rnd_08_gen|state_07[5]   ;
+; pseudo_random_generator:rnd_led_gen|state_07[27]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[27]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[18]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[18]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[39]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[39]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[33]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[33]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[10]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[10]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[25]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[25]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[44]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[44]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[39]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[39]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[23]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[23]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[19]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[19]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[31]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[31]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[41]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[41]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[12]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[12]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[5]           ; Merged with pseudo_random_generator:rnd_08_gen|state_06[5]   ;
+; pseudo_random_generator:rnd_led_gen|state_06[2]           ; Merged with pseudo_random_generator:rnd_08_gen|state_06[2]   ;
+; pseudo_random_generator:rnd_led_gen|state_05[26]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[26]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[6]           ; Merged with pseudo_random_generator:rnd_08_gen|state_05[6]   ;
+; pseudo_random_generator:rnd_led_gen|state_05[46]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[46]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[3]           ; Merged with pseudo_random_generator:rnd_08_gen|state_05[3]   ;
+; pseudo_random_generator:rnd_led_gen|state_05[23]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[23]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[16]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[16]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[39]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[39]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[32]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[32]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[40]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[40]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[28]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[28]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[10]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[10]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[15]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[15]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[38]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[38]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[14]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[14]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[26]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[26]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[18]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[18]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[0]           ; Merged with pseudo_random_generator:rnd_08_gen|state_04[0]   ;
+; pseudo_random_generator:rnd_led_gen|state_04[6]           ; Merged with pseudo_random_generator:rnd_08_gen|state_04[6]   ;
+; pseudo_random_generator:rnd_led_gen|state_04[29]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[29]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[23]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[23]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[8]           ; Merged with pseudo_random_generator:rnd_08_gen|state_04[8]   ;
+; pseudo_random_generator:rnd_led_gen|state_04[47]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[47]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[33]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[33]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[42]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[42]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[25]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[25]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[8]           ; Merged with pseudo_random_generator:rnd_08_gen|state_03[8]   ;
+; pseudo_random_generator:rnd_led_gen|state_03[18]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[18]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[14]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[14]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[43]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[43]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[36]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[36]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[7]           ; Merged with pseudo_random_generator:rnd_08_gen|state_03[7]   ;
+; pseudo_random_generator:rnd_led_gen|state_03[1]           ; Merged with pseudo_random_generator:rnd_08_gen|state_03[1]   ;
+; pseudo_random_generator:rnd_led_gen|state_03[32]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[32]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[21]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[21]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[46]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[46]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[28]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[28]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[10]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[10]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[46]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[46]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[28]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[28]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[25]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[25]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[16]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[16]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[35]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[35]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[20]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[20]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[14]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[14]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[41]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[41]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[0]           ; Merged with pseudo_random_generator:rnd_08_gen|state_02[0]   ;
+; pseudo_random_generator:rnd_led_gen|state_02[5]           ; Merged with pseudo_random_generator:rnd_08_gen|state_02[5]   ;
+; pseudo_random_generator:rnd_led_gen|state_02[36]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[36]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[34]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[34]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[37]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[37]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[29]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[29]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[9]           ; Merged with pseudo_random_generator:rnd_08_gen|state_01[9]   ;
+; pseudo_random_generator:rnd_led_gen|state_01[23]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[23]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[3]           ; Merged with pseudo_random_generator:rnd_08_gen|state_01[3]   ;
+; pseudo_random_generator:rnd_led_gen|state_01[46]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[46]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[15]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[15]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[27]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[27]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[43]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[43]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[19]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[19]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[5]           ; Merged with pseudo_random_generator:rnd_08_gen|state_01[5]   ;
+; pseudo_random_generator:rnd_led_gen|state_00[2]           ; Merged with pseudo_random_generator:rnd_08_gen|state_00[2]   ;
+; pseudo_random_generator:rnd_led_gen|state_00[8]           ; Merged with pseudo_random_generator:rnd_08_gen|state_00[8]   ;
+; pseudo_random_generator:rnd_led_gen|state_00[31]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[31]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[47]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[47]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[3]           ; Merged with pseudo_random_generator:rnd_08_gen|state_00[3]   ;
+; pseudo_random_generator:rnd_led_gen|state_00[21]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[21]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[28]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[28]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[9]           ; Merged with pseudo_random_generator:rnd_08_gen|state_00[9]   ;
+; pseudo_random_generator:rnd_led_gen|state_00[44]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[44]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[33]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[33]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[42]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[42]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[27]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[27]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[34]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[34]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[32]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[32]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[38]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[38]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[17]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[17]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[16]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[16]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[45]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[45]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[23]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[23]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[6]           ; Merged with pseudo_random_generator:rnd_08_gen|state_00[6]   ;
+; pseudo_random_generator:rnd_led_gen|state_00[24]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[24]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[40]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[40]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[41]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[41]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[26]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[26]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[46]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[46]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[30]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[30]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[5]           ; Merged with pseudo_random_generator:rnd_08_gen|state_00[5]   ;
+; pseudo_random_generator:rnd_led_gen|state_00[22]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[22]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[4]           ; Merged with pseudo_random_generator:rnd_08_gen|state_00[4]   ;
+; pseudo_random_generator:rnd_led_gen|state_00[0]           ; Merged with pseudo_random_generator:rnd_08_gen|state_00[0]   ;
+; pseudo_random_generator:rnd_led_gen|state_00[12]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[12]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[20]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[20]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[29]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[29]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[37]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[37]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[11]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[11]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[18]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[18]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[14]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[14]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[35]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[35]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[13]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[13]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[39]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[39]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[43]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[43]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[1]           ; Merged with pseudo_random_generator:rnd_08_gen|state_00[1]   ;
+; pseudo_random_generator:rnd_led_gen|state_00[25]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[25]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[19]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[19]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[7]           ; Merged with pseudo_random_generator:rnd_08_gen|state_00[7]   ;
+; pseudo_random_generator:rnd_led_gen|state_00[10]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[10]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[15]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[15]  ;
+; pseudo_random_generator:rnd_led_gen|state_00[36]          ; Merged with pseudo_random_generator:rnd_08_gen|state_00[36]  ;
+; pseudo_random_generator:rnd_led_gen|carry                 ; Merged with pseudo_random_generator:rnd_08_gen|carry         ;
+; pseudo_random_generator:rnd_led_gen|state_08[32]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[32]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[4]           ; Merged with pseudo_random_generator:rnd_08_gen|state_08[4]   ;
+; pseudo_random_generator:rnd_led_gen|state_08[45]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[45]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[2]           ; Merged with pseudo_random_generator:rnd_08_gen|state_07[2]   ;
+; pseudo_random_generator:rnd_led_gen|state_07[32]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[32]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[6]           ; Merged with pseudo_random_generator:rnd_08_gen|state_07[6]   ;
+; pseudo_random_generator:rnd_led_gen|state_07[19]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[19]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[47]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[47]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[37]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[37]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[18]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[18]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[32]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[32]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[37]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[37]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[4]           ; Merged with pseudo_random_generator:rnd_08_gen|state_06[4]   ;
+; pseudo_random_generator:rnd_led_gen|state_06[45]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[45]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[1]           ; Merged with pseudo_random_generator:rnd_08_gen|state_06[1]   ;
+; pseudo_random_generator:rnd_led_gen|state_05[19]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[19]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[37]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[37]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[2]           ; Merged with pseudo_random_generator:rnd_08_gen|state_05[2]   ;
+; pseudo_random_generator:rnd_led_gen|state_05[45]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[45]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[34]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[34]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[5]           ; Merged with pseudo_random_generator:rnd_08_gen|state_05[5]   ;
+; pseudo_random_generator:rnd_led_gen|state_04[5]           ; Merged with pseudo_random_generator:rnd_08_gen|state_04[5]   ;
+; pseudo_random_generator:rnd_led_gen|state_04[37]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[37]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[45]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[45]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[17]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[17]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[2]           ; Merged with pseudo_random_generator:rnd_08_gen|state_04[2]   ;
+; pseudo_random_generator:rnd_led_gen|state_04[32]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[32]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[34]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[34]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[37]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[37]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[2]           ; Merged with pseudo_random_generator:rnd_08_gen|state_03[2]   ;
+; pseudo_random_generator:rnd_led_gen|state_03[19]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[19]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[45]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[45]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[5]           ; Merged with pseudo_random_generator:rnd_08_gen|state_03[5]   ;
+; pseudo_random_generator:rnd_led_gen|state_02[45]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[45]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[4]           ; Merged with pseudo_random_generator:rnd_08_gen|state_02[4]   ;
+; pseudo_random_generator:rnd_led_gen|state_02[32]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[32]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[19]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[19]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[2]           ; Merged with pseudo_random_generator:rnd_08_gen|state_02[2]   ;
+; pseudo_random_generator:rnd_led_gen|state_02[37]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[37]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[32]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[32]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[39]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[39]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[2]           ; Merged with pseudo_random_generator:rnd_08_gen|state_01[2]   ;
+; pseudo_random_generator:rnd_led_gen|state_01[45]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[45]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[6]           ; Merged with pseudo_random_generator:rnd_08_gen|state_01[6]   ;
+; pseudo_random_generator:rnd_led_gen|state_01[16]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[16]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[1]           ; Merged with pseudo_random_generator:rnd_08_gen|state_08[1]   ;
+; pseudo_random_generator:rnd_led_gen|state_08[34]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[34]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[12]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[12]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[25]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[25]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[42]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[42]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[43]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[43]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[46]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[46]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[29]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[29]  ;
+; pseudo_random_generator:rnd_led_gen|state_08[21]          ; Merged with pseudo_random_generator:rnd_08_gen|state_08[21]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[30]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[30]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[22]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[22]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[21]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[21]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[34]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[34]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[11]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[11]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[15]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[15]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[3]           ; Merged with pseudo_random_generator:rnd_08_gen|state_07[3]   ;
+; pseudo_random_generator:rnd_led_gen|state_07[26]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[26]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[41]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[41]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[10]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[10]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[23]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[23]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[43]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[43]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[0]           ; Merged with pseudo_random_generator:rnd_08_gen|state_07[0]   ;
+; pseudo_random_generator:rnd_led_gen|state_07[38]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[38]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[33]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[33]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[14]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[14]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[4]           ; Merged with pseudo_random_generator:rnd_08_gen|state_07[4]   ;
+; pseudo_random_generator:rnd_led_gen|state_07[25]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[25]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[29]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[29]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[42]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[42]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[36]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[36]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[17]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[17]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[7]           ; Merged with pseudo_random_generator:rnd_08_gen|state_07[7]   ;
+; pseudo_random_generator:rnd_led_gen|state_07[24]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[24]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[46]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[46]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[13]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[13]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[44]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[44]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[31]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[31]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[16]          ; Merged with pseudo_random_generator:rnd_08_gen|state_07[16]  ;
+; pseudo_random_generator:rnd_led_gen|state_07[8]           ; Merged with pseudo_random_generator:rnd_08_gen|state_07[8]   ;
+; pseudo_random_generator:rnd_led_gen|state_06[11]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[11]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[36]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[36]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[29]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[29]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[35]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[35]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[42]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[42]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[43]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[43]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[38]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[38]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[47]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[47]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[21]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[21]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[30]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[30]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[46]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[46]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[9]           ; Merged with pseudo_random_generator:rnd_08_gen|state_06[9]   ;
+; pseudo_random_generator:rnd_led_gen|state_06[27]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[27]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[17]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[17]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[26]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[26]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[14]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[14]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[22]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[22]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[40]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[40]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[24]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[24]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[28]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[28]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[34]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[34]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[15]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[15]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[20]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[20]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[8]           ; Merged with pseudo_random_generator:rnd_08_gen|state_06[8]   ;
+; pseudo_random_generator:rnd_led_gen|state_06[13]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[13]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[3]           ; Merged with pseudo_random_generator:rnd_08_gen|state_06[3]   ;
+; pseudo_random_generator:rnd_led_gen|state_06[7]           ; Merged with pseudo_random_generator:rnd_08_gen|state_06[7]   ;
+; pseudo_random_generator:rnd_led_gen|state_06[16]          ; Merged with pseudo_random_generator:rnd_08_gen|state_06[16]  ;
+; pseudo_random_generator:rnd_led_gen|state_06[6]           ; Merged with pseudo_random_generator:rnd_08_gen|state_06[6]   ;
+; pseudo_random_generator:rnd_led_gen|state_06[0]           ; Merged with pseudo_random_generator:rnd_08_gen|state_06[0]   ;
+; pseudo_random_generator:rnd_led_gen|state_05[47]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[47]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[38]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[38]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[44]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[44]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[21]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[21]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[24]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[24]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[4]           ; Merged with pseudo_random_generator:rnd_08_gen|state_05[4]   ;
+; pseudo_random_generator:rnd_led_gen|state_05[25]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[25]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[36]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[36]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[9]           ; Merged with pseudo_random_generator:rnd_08_gen|state_05[9]   ;
+; pseudo_random_generator:rnd_led_gen|state_05[8]           ; Merged with pseudo_random_generator:rnd_08_gen|state_05[8]   ;
+; pseudo_random_generator:rnd_led_gen|state_05[1]           ; Merged with pseudo_random_generator:rnd_08_gen|state_05[1]   ;
+; pseudo_random_generator:rnd_led_gen|state_05[42]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[42]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[43]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[43]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[18]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[18]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[20]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[20]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[35]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[35]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[17]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[17]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[0]           ; Merged with pseudo_random_generator:rnd_08_gen|state_05[0]   ;
+; pseudo_random_generator:rnd_led_gen|state_05[22]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[22]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[31]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[31]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[29]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[29]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[12]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[12]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[41]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[41]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[14]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[14]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[13]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[13]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[27]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[27]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[33]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[33]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[11]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[11]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[30]          ; Merged with pseudo_random_generator:rnd_08_gen|state_05[30]  ;
+; pseudo_random_generator:rnd_led_gen|state_05[7]           ; Merged with pseudo_random_generator:rnd_08_gen|state_05[7]   ;
+; pseudo_random_generator:rnd_led_gen|state_04[27]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[27]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[4]           ; Merged with pseudo_random_generator:rnd_08_gen|state_04[4]   ;
+; pseudo_random_generator:rnd_led_gen|state_04[3]           ; Merged with pseudo_random_generator:rnd_08_gen|state_04[3]   ;
+; pseudo_random_generator:rnd_led_gen|state_04[7]           ; Merged with pseudo_random_generator:rnd_08_gen|state_04[7]   ;
+; pseudo_random_generator:rnd_led_gen|state_04[36]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[36]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[9]           ; Merged with pseudo_random_generator:rnd_08_gen|state_04[9]   ;
+; pseudo_random_generator:rnd_led_gen|state_04[22]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[22]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[12]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[12]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[1]           ; Merged with pseudo_random_generator:rnd_08_gen|state_04[1]   ;
+; pseudo_random_generator:rnd_led_gen|state_04[28]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[28]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[30]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[30]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[34]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[34]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[13]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[13]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[35]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[35]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[40]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[40]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[43]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[43]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[21]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[21]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[19]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[19]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[15]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[15]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[44]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[44]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[41]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[41]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[31]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[31]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[24]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[24]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[11]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[11]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[46]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[46]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[39]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[39]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[25]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[25]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[20]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[20]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[10]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[10]  ;
+; pseudo_random_generator:rnd_led_gen|state_04[16]          ; Merged with pseudo_random_generator:rnd_08_gen|state_04[16]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[10]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[10]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[16]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[16]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[38]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[38]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[13]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[13]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[3]           ; Merged with pseudo_random_generator:rnd_08_gen|state_03[3]   ;
+; pseudo_random_generator:rnd_led_gen|state_03[6]           ; Merged with pseudo_random_generator:rnd_08_gen|state_03[6]   ;
+; pseudo_random_generator:rnd_led_gen|state_03[47]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[47]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[9]           ; Merged with pseudo_random_generator:rnd_08_gen|state_03[9]   ;
+; pseudo_random_generator:rnd_led_gen|state_03[22]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[22]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[11]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[11]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[35]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[35]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[27]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[27]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[30]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[30]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[4]           ; Merged with pseudo_random_generator:rnd_08_gen|state_03[4]   ;
+; pseudo_random_generator:rnd_led_gen|state_03[23]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[23]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[40]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[40]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[0]           ; Merged with pseudo_random_generator:rnd_08_gen|state_03[0]   ;
+; pseudo_random_generator:rnd_led_gen|state_03[39]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[39]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[26]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[26]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[17]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[17]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[24]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[24]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[29]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[29]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[42]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[42]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[41]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[41]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[31]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[31]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[20]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[20]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[12]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[12]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[33]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[33]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[44]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[44]  ;
+; pseudo_random_generator:rnd_led_gen|state_03[15]          ; Merged with pseudo_random_generator:rnd_08_gen|state_03[15]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[47]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[47]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[33]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[33]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[8]           ; Merged with pseudo_random_generator:rnd_08_gen|state_02[8]   ;
+; pseudo_random_generator:rnd_led_gen|state_02[11]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[11]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[15]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[15]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[42]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[42]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[3]           ; Merged with pseudo_random_generator:rnd_08_gen|state_02[3]   ;
+; pseudo_random_generator:rnd_led_gen|state_02[23]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[23]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[13]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[13]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[31]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[31]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[39]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[39]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[44]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[44]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[43]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[43]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[21]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[21]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[18]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[18]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[12]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[12]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[30]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[30]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[24]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[24]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[7]           ; Merged with pseudo_random_generator:rnd_08_gen|state_02[7]   ;
+; pseudo_random_generator:rnd_led_gen|state_02[22]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[22]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[27]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[27]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[1]           ; Merged with pseudo_random_generator:rnd_08_gen|state_02[1]   ;
+; pseudo_random_generator:rnd_led_gen|state_02[38]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[38]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[34]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[34]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[6]           ; Merged with pseudo_random_generator:rnd_08_gen|state_02[6]   ;
+; pseudo_random_generator:rnd_led_gen|state_02[17]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[17]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[26]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[26]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[9]           ; Merged with pseudo_random_generator:rnd_08_gen|state_02[9]   ;
+; pseudo_random_generator:rnd_led_gen|state_02[29]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[29]  ;
+; pseudo_random_generator:rnd_led_gen|state_02[40]          ; Merged with pseudo_random_generator:rnd_08_gen|state_02[40]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[33]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[33]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[35]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[35]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[14]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[14]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[47]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[47]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[12]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[12]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[31]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[31]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[10]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[10]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[13]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[13]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[22]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[22]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[1]           ; Merged with pseudo_random_generator:rnd_08_gen|state_01[1]   ;
+; pseudo_random_generator:rnd_led_gen|state_01[44]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[44]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[24]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[24]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[30]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[30]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[42]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[42]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[36]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[36]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[21]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[21]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[11]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[11]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[26]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[26]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[20]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[20]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[41]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[41]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[28]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[28]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[25]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[25]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[4]           ; Merged with pseudo_random_generator:rnd_08_gen|state_01[4]   ;
+; pseudo_random_generator:rnd_led_gen|state_01[8]           ; Merged with pseudo_random_generator:rnd_08_gen|state_01[8]   ;
+; pseudo_random_generator:rnd_led_gen|state_01[0]           ; Merged with pseudo_random_generator:rnd_08_gen|state_01[0]   ;
+; pseudo_random_generator:rnd_led_gen|state_01[18]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[18]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[7]           ; Merged with pseudo_random_generator:rnd_08_gen|state_01[7]   ;
+; pseudo_random_generator:rnd_led_gen|state_01[38]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[38]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[17]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[17]  ;
+; pseudo_random_generator:rnd_led_gen|state_01[40]          ; Merged with pseudo_random_generator:rnd_08_gen|state_01[40]  ;
+; pseudo_random_generator:rnd_08_gen|state_09[28]           ; Merged with pseudo_random_generator:rnd_led_gen|state_09[28] ;
+; pseudo_random_generator:rnd_08_gen|state_09[9]            ; Merged with pseudo_random_generator:rnd_led_gen|state_09[9]  ;
+; pseudo_random_generator:rnd_08_gen|state_08[11]           ; Merged with pseudo_random_generator:rnd_led_gen|state_08[11] ;
+; pseudo_random_generator:rnd_08_gen|state_08[18]           ; Merged with pseudo_random_generator:rnd_led_gen|state_08[18] ;
+; pseudo_random_generator:rnd_08_gen|state_08[36]           ; Merged with pseudo_random_generator:rnd_led_gen|state_08[36] ;
+; pseudo_random_generator:rnd_08_gen|state_09[42]           ; Merged with pseudo_random_generator:rnd_led_gen|state_09[42] ;
+; pseudo_random_generator:rnd_08_gen|state_09[25]           ; Merged with pseudo_random_generator:rnd_led_gen|state_09[25] ;
+; pseudo_random_generator:rnd_08_gen|state_09[24]           ; Merged with pseudo_random_generator:rnd_led_gen|state_09[24] ;
+; pseudo_random_generator:rnd_08_gen|state_09[19]           ; Merged with pseudo_random_generator:rnd_led_gen|state_09[19] ;
+; pseudo_random_generator:rnd_08_gen|state_09[17]           ; Merged with pseudo_random_generator:rnd_led_gen|state_09[17] ;
+; pseudo_random_generator:rnd_08_gen|state_10[6]            ; Merged with pseudo_random_generator:rnd_led_gen|state_10[6]  ;
+; pseudo_random_generator:rnd_08_gen|state_10[5]            ; Merged with pseudo_random_generator:rnd_led_gen|state_10[5]  ;
+; pseudo_random_generator:rnd_08_gen|state_10[4]            ; Merged with pseudo_random_generator:rnd_led_gen|state_10[4]  ;
+; pseudo_random_generator:rnd_08_gen|state_10[3]            ; Merged with pseudo_random_generator:rnd_led_gen|state_10[3]  ;
+; pseudo_random_generator:rnd_08_gen|state_10[2]            ; Merged with pseudo_random_generator:rnd_led_gen|state_10[2]  ;
+; pseudo_random_generator:rnd_08_gen|state_10[1]            ; Merged with pseudo_random_generator:rnd_led_gen|state_10[1]  ;
+; pseudo_random_generator:rnd_08_gen|state_10[0]            ; Merged with pseudo_random_generator:rnd_led_gen|state_10[0]  ;
+; pseudo_random_generator:rnd_08_gen|state_00[0]            ; Merged with freqdivider:freq_div1hz|s_divCounter[0]          ;
+; freqdivider:freq_div4hz|s_divCounter[0]                   ; Merged with freqdivider:freq_div1hz|s_divCounter[0]          ;
+; freqdivider:freq_div8hz|s_divCounter[0]                   ; Merged with freqdivider:freq_div1hz|s_divCounter[0]          ;
+; freqdivider:freq_div2hz|s_divCounter[0]                   ; Merged with freqdivider:freq_div1hz|s_divCounter[0]          ;
+; freqdivider:freq_div2hz|s_divCounter[1]                   ; Merged with freqdivider:freq_div1hz|s_divCounter[1]          ;
+; freqdivider:freq_div4hz|s_divCounter[1]                   ; Merged with freqdivider:freq_div1hz|s_divCounter[1]          ;
+; freqdivider:freq_div8hz|s_divCounter[1]                   ; Merged with freqdivider:freq_div1hz|s_divCounter[1]          ;
+; pseudo_random_generator:rnd_08_gen|state_00[1]            ; Merged with freqdivider:freq_div1hz|s_divCounter[1]          ;
+; freqdivider:freq_div4hz|s_divCounter[2]                   ; Merged with freqdivider:freq_div8hz|s_divCounter[2]          ;
+; freqdivider:freq_div2hz|s_divCounter[2]                   ; Merged with freqdivider:freq_div8hz|s_divCounter[2]          ;
+; freqdivider:freq_div8hz|s_divCounter[2]                   ; Merged with freqdivider:freq_div1hz|s_divCounter[2]          ;
+; freqdivider:freq_div2hz|s_divCounter[3]                   ; Merged with freqdivider:freq_div8hz|s_divCounter[3]          ;
+; freqdivider:freq_div4hz|s_divCounter[3]                   ; Merged with freqdivider:freq_div8hz|s_divCounter[3]          ;
+; freqdivider:freq_div8hz|s_divCounter[3]                   ; Merged with freqdivider:freq_div1hz|s_divCounter[3]          ;
+; freqdivider:freq_div4hz|s_divCounter[4]                   ; Merged with freqdivider:freq_div2hz|s_divCounter[4]          ;
+; freqdivider:freq_div2hz|s_divCounter[4]                   ; Merged with freqdivider:freq_div1hz|s_divCounter[4]          ;
+; freqdivider:freq_div2hz|s_divCounter[5]                   ; Merged with freqdivider:freq_div1hz|s_divCounter[5]          ;
+; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[5..30]                ; Lost fanout                                                  ;
+; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[5..30]                ; Lost fanout                                                  ;
+; guesss_number:guess_number|count_attempts[7..30]          ; Lost fanout                                                  ;
+; Total Number of Removed Registers = 558                   ;                                                              ;
++-----------------------------------------------------------+--------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                      ;
++-----------------------------------------+--------------------+-----------------------------------------------------------------------------------+
+; Register name                           ; Reason for Removal ; Registers Removed due to This Register                                            ;
++-----------------------------------------+--------------------+-----------------------------------------------------------------------------------+
+; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[30] ; Lost Fanouts       ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[29], bin_to_bcd_fsm:bin_to_bcd1|s_digit1[28], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[27], bin_to_bcd_fsm:bin_to_bcd1|s_digit1[26], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[25], bin_to_bcd_fsm:bin_to_bcd1|s_digit1[24], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[23], bin_to_bcd_fsm:bin_to_bcd1|s_digit1[22], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[21], bin_to_bcd_fsm:bin_to_bcd1|s_digit1[20], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[19], bin_to_bcd_fsm:bin_to_bcd1|s_digit1[18], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[17], bin_to_bcd_fsm:bin_to_bcd1|s_digit1[16], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[15], bin_to_bcd_fsm:bin_to_bcd1|s_digit1[14], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[13], bin_to_bcd_fsm:bin_to_bcd1|s_digit1[12], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[11], bin_to_bcd_fsm:bin_to_bcd1|s_digit1[10], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[9], bin_to_bcd_fsm:bin_to_bcd1|s_digit1[8],   ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[7], bin_to_bcd_fsm:bin_to_bcd1|s_digit1[6],   ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd1|s_digit1[5]                                            ;
+; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[30] ; Lost Fanouts       ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[29], bin_to_bcd_fsm:bin_to_bcd0|s_digit1[28], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[27], bin_to_bcd_fsm:bin_to_bcd0|s_digit1[26], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[25], bin_to_bcd_fsm:bin_to_bcd0|s_digit1[24], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[23], bin_to_bcd_fsm:bin_to_bcd0|s_digit1[22], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[21], bin_to_bcd_fsm:bin_to_bcd0|s_digit1[20], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[19], bin_to_bcd_fsm:bin_to_bcd0|s_digit1[18], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[17], bin_to_bcd_fsm:bin_to_bcd0|s_digit1[16], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[15], bin_to_bcd_fsm:bin_to_bcd0|s_digit1[14], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[13], bin_to_bcd_fsm:bin_to_bcd0|s_digit1[12], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[11], bin_to_bcd_fsm:bin_to_bcd0|s_digit1[10], ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[9], bin_to_bcd_fsm:bin_to_bcd0|s_digit1[8],   ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[7], bin_to_bcd_fsm:bin_to_bcd0|s_digit1[6],   ;
+;                                         ;                    ; bin_to_bcd_fsm:bin_to_bcd0|s_digit1[5]                                            ;
++-----------------------------------------+--------------------+-----------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1020  ;
+; Number of registers using Synchronous Clear  ; 67    ;
+; Number of registers using Synchronous Load   ; 44    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 408   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------+
+; Inverted Register Statistics                               ;
++--------------------------------------------------+---------+
+; Inverted Register                                ; Fan out ;
++--------------------------------------------------+---------+
+; pseudo_random_generator:rnd_led_gen|state_10[2]  ; 5       ;
+; pseudo_random_generator:rnd_led_gen|state_10[5]  ; 5       ;
+; pseudo_random_generator:rnd_led_gen|state_10[16] ; 1       ;
+; guesss_number:guess_number|hi[6]                 ; 3       ;
+; guesss_number:guess_number|hi[5]                 ; 3       ;
+; guesss_number:guess_number|hi[1]                 ; 3       ;
+; guesss_number:guess_number|hi[0]                 ; 3       ;
+; pseudo_random_generator:rnd_led_gen|state_09[37] ; 4       ;
+; pseudo_random_generator:rnd_led_gen|state_09[45] ; 4       ;
+; pseudo_random_generator:rnd_led_gen|state_08[18] ; 2       ;
+; pseudo_random_generator:rnd_08_gen|state_08[45]  ; 2       ;
+; pseudo_random_generator:rnd_08_gen|state_08[5]   ; 3       ;
+; pseudo_random_generator:rnd_08_gen|state_08[32]  ; 3       ;
+; pseudo_random_generator:rnd_led_gen|state_08[37] ; 1       ;
+; pseudo_random_generator:rnd_led_gen|state_08[16] ; 2       ;
+; pseudo_random_generator:rnd_08_gen|state_07[16]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_07[45]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_07[37]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_07[5]   ; 3       ;
+; pseudo_random_generator:rnd_08_gen|state_07[32]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_07[18]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_07[2]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_06[32]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_06[18]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_06[5]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_06[45]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_06[2]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_06[37]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_06[16]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_05[2]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_05[37]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_05[18]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_05[45]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_05[16]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_05[5]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_05[32]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_04[2]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_04[16]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_04[18]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_04[5]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_04[45]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_04[37]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_04[32]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_03[32]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_03[16]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_03[5]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_03[18]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_03[2]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_03[37]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_03[45]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_02[32]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_02[16]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_02[5]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_02[2]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_02[18]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_02[37]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_02[45]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_01[5]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_01[45]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_01[18]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_01[2]   ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_01[32]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_01[16]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_01[37]  ; 4       ;
+; pseudo_random_generator:rnd_08_gen|state_00[45]  ; 5       ;
+; pseudo_random_generator:rnd_08_gen|state_00[16]  ; 6       ;
+; pseudo_random_generator:rnd_08_gen|state_00[18]  ; 6       ;
+; pseudo_random_generator:rnd_08_gen|state_00[37]  ; 5       ;
+; pseudo_random_generator:rnd_08_gen|state_00[32]  ; 5       ;
+; pseudo_random_generator:rnd_08_gen|state_00[2]   ; 6       ;
+; pseudo_random_generator:rnd_08_gen|state_00[5]   ; 6       ;
+; Total number of inverted registers = 71          ;         ;
++--------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |guess_final|bin_to_bcd_fsm:bin_to_bcd1|s_digit0[3]       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |guess_final|bin_to_bcd_fsm:bin_to_bcd0|s_digit0[1]       ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |guess_final|guesss_number:guess_number|textOut[29]       ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |guess_final|guesss_number:guess_number|textOut[39]       ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |guess_final|guesss_number:guess_number|textOut[24]       ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; Yes        ; |guess_final|guesss_number:guess_number|textOut[32]       ;
+; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |guess_final|Debouncer:Debouncer0|s_debounceCnt[17]       ;
+; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |guess_final|Debouncer:Debouncer3|s_debounceCnt[3]        ;
+; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |guess_final|Debouncer:Debouncer2|s_debounceCnt[16]       ;
+; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |guess_final|Debouncer:Debouncer1|s_debounceCnt[1]        ;
+; 5:1                ; 40 bits   ; 120 LEs       ; 40 LEs               ; 80 LEs                 ; Yes        ; |guess_final|guesss_number:guess_number|texts1[37]        ;
+; 5:1                ; 31 bits   ; 93 LEs        ; 31 LEs               ; 62 LEs                 ; Yes        ; |guess_final|guesss_number:guess_number|count_attempts[3] ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |guess_final|guesss_number:guess_number|n_attempts[4]     ;
+; 6:1                ; 18 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |guess_final|guesss_number:guess_number|leds_out[0]       ;
+; 6:1                ; 31 bits   ; 124 LEs       ; 31 LEs               ; 93 LEs                 ; Yes        ; |guess_final|guesss_number:guess_number|s_count[21]       ;
+; 6:1                ; 27 bits   ; 108 LEs       ; 54 LEs               ; 54 LEs                 ; Yes        ; |guess_final|guesss_number:guess_number|hi[12]            ;
+; 6:1                ; 23 bits   ; 92 LEs        ; 23 LEs               ; 69 LEs                 ; Yes        ; |guess_final|guesss_number:guess_number|lo[14]            ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |guess_final|guesss_number:guess_number|lo[6]             ;
+; 7:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |guess_final|guesss_number:guess_number|s_attempt[0]      ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 10 LEs               ; 20 LEs                 ; Yes        ; |guess_final|bin_to_bcd_fsm:bin_to_bcd1|s_dnum[6]         ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 10 LEs               ; 20 LEs                 ; Yes        ; |guess_final|bin_to_bcd_fsm:bin_to_bcd0|s_dnum[5]         ;
+; 10:1               ; 30 bits   ; 180 LEs       ; 60 LEs               ; 120 LEs                ; Yes        ; |guess_final|bin_to_bcd_fsm:bin_to_bcd1|s_digit1[12]      ;
+; 10:1               ; 30 bits   ; 180 LEs       ; 60 LEs               ; 120 LEs                ; Yes        ; |guess_final|bin_to_bcd_fsm:bin_to_bcd0|s_digit1[21]      ;
+; 12:1               ; 7 bits    ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |guess_final|guesss_number:guess_number|attempt[0]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |guess_final|guesss_number:guess_number|hi[6]             ;
+; 3:1                ; 21 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |guess_final|disp_select:disp_select|d4[1]                ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |guess_final|guesss_number:guess_number|s_currentState    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: freqdivider:freq_div1hz ;
++----------------+----------+------------------------------------------+
+; Parameter Name ; Value    ; Type                                     ;
++----------------+----------+------------------------------------------+
+; divfactor      ; 50000000 ; Signed Integer                           ;
++----------------+----------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: freqdivider:freq_div2hz ;
++----------------+----------+------------------------------------------+
+; Parameter Name ; Value    ; Type                                     ;
++----------------+----------+------------------------------------------+
+; divfactor      ; 25000000 ; Signed Integer                           ;
++----------------+----------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: freqdivider:freq_div4hz ;
++----------------+----------+------------------------------------------+
+; Parameter Name ; Value    ; Type                                     ;
++----------------+----------+------------------------------------------+
+; divfactor      ; 12500000 ; Signed Integer                           ;
++----------------+----------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: freqdivider:freq_div8hz ;
++----------------+---------+-------------------------------------------+
+; Parameter Name ; Value   ; Type                                      ;
++----------------+---------+-------------------------------------------+
+; divfactor      ; 6250000 ; Signed Integer                            ;
++----------------+---------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Debouncer:Debouncer0 ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; khzclkfreq     ; 50000 ; Signed Integer                           ;
+; msecmininwidth ; 100   ; Signed Integer                           ;
+; inpolarity     ; '1'   ; Enumerated                               ;
+; outpolarity    ; '1'   ; Enumerated                               ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Debouncer:Debouncer1 ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; khzclkfreq     ; 50000 ; Signed Integer                           ;
+; msecmininwidth ; 100   ; Signed Integer                           ;
+; inpolarity     ; '1'   ; Enumerated                               ;
+; outpolarity    ; '1'   ; Enumerated                               ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Debouncer:Debouncer2 ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; khzclkfreq     ; 50000 ; Signed Integer                           ;
+; msecmininwidth ; 100   ; Signed Integer                           ;
+; inpolarity     ; '1'   ; Enumerated                               ;
+; outpolarity    ; '1'   ; Enumerated                               ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Debouncer:Debouncer3 ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; khzclkfreq     ; 50000 ; Signed Integer                           ;
+; msecmininwidth ; 100   ; Signed Integer                           ;
+; inpolarity     ; '1'   ; Enumerated                               ;
+; outpolarity    ; '1'   ; Enumerated                               ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: pseudo_random_generator:rnd_08_gen     ;
++----------------+--------------------------------------------------+-----------------+
+; Parameter Name ; Value                                            ; Type            ;
++----------------+--------------------------------------------------+-----------------+
+; n_bits         ; 7                                                ; Signed Integer  ;
+; seed           ; 001000000010000100000000000001010000000000100100 ; Unsigned Binary ;
++----------------+--------------------------------------------------+-----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: pseudo_random_generator:rnd_led_gen    ;
++----------------+--------------------------------------------------+-----------------+
+; Parameter Name ; Value                                            ; Type            ;
++----------------+--------------------------------------------------+-----------------+
+; n_bits         ; 18                                               ; Signed Integer  ;
+; seed           ; 001000000010000100000000000001010000000000100100 ; Unsigned Binary ;
++----------------+--------------------------------------------------+-----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Bin7SegDecoder:bin7seg0" ;
++--------+-------+----------+-------------------------+
+; Port   ; Type  ; Severity ; Details                 ;
++--------+-------+----------+-------------------------+
+; enable ; Input ; Info     ; Stuck at VCC            ;
++--------+-------+----------+-------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Bin7SegDecoder:bin7seg1" ;
++--------+-------+----------+-------------------------+
+; Port   ; Type  ; Severity ; Details                 ;
++--------+-------+----------+-------------------------+
+; enable ; Input ; Info     ; Stuck at VCC            ;
++--------+-------+----------+-------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Bin7SegDecoder:bin7seg2" ;
++--------+-------+----------+-------------------------+
+; Port   ; Type  ; Severity ; Details                 ;
++--------+-------+----------+-------------------------+
+; enable ; Input ; Info     ; Stuck at VCC            ;
++--------+-------+----------+-------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Bin7SegDecoder:bin7seg3" ;
++--------+-------+----------+-------------------------+
+; Port   ; Type  ; Severity ; Details                 ;
++--------+-------+----------+-------------------------+
+; enable ; Input ; Info     ; Stuck at VCC            ;
++--------+-------+----------+-------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Bin7SegDecoder:bin7seg4" ;
++--------+-------+----------+-------------------------+
+; Port   ; Type  ; Severity ; Details                 ;
++--------+-------+----------+-------------------------+
+; enable ; Input ; Info     ; Stuck at VCC            ;
++--------+-------+----------+-------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Bin7SegDecoder:bin7seg5" ;
++--------+-------+----------+-------------------------+
+; Port   ; Type  ; Severity ; Details                 ;
++--------+-------+----------+-------------------------+
+; enable ; Input ; Info     ; Stuck at VCC            ;
++--------+-------+----------+-------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Bin7SegDecoder:bin7seg6" ;
++--------+-------+----------+-------------------------+
+; Port   ; Type  ; Severity ; Details                 ;
++--------+-------+----------+-------------------------+
+; enable ; Input ; Info     ; Stuck at VCC            ;
++--------+-------+----------+-------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Bin7SegDecoder:bin7seg7" ;
++--------+-------+----------+-------------------------+
+; Port   ; Type  ; Severity ; Details                 ;
++--------+-------+----------+-------------------------+
+; enable ; Input ; Info     ; Stuck at VCC            ;
++--------+-------+----------+-------------------------+
+
+
++-----------------------------------------------------------------+
+; Port Connectivity Checks: "pseudo_random_generator:rnd_led_gen" ;
++--------+-------+----------+-------------------------------------+
+; Port   ; Type  ; Severity ; Details                             ;
++--------+-------+----------+-------------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                        ;
++--------+-------+----------+-------------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "pseudo_random_generator:rnd_08_gen" ;
++--------+-------+----------+------------------------------------+
+; Port   ; Type  ; Severity ; Details                            ;
++--------+-------+----------+------------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                       ;
++--------+-------+----------+------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 90                          ;
+; cycloneiii_ff         ; 1020                        ;
+;     ENA               ; 327                         ;
+;     ENA SCLR          ; 38                          ;
+;     ENA SCLR SLD      ; 15                          ;
+;     ENA SLD           ; 28                          ;
+;     SCLR              ; 14                          ;
+;     SLD               ; 1                           ;
+;     plain             ; 597                         ;
+; cycloneiii_lcell_comb ; 1863                        ;
+;     arith             ; 543                         ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 462                         ;
+;         3 data inputs ; 80                          ;
+;     normal            ; 1320                        ;
+;         0 data inputs ; 4                           ;
+;         1 data inputs ; 39                          ;
+;         2 data inputs ; 164                         ;
+;         3 data inputs ; 111                         ;
+;         4 data inputs ; 1002                        ;
+;                       ;                             ;
+; Max LUT depth         ; 7.10                        ;
+; Average LUT depth     ; 3.27                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:03     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+    Info: Processing started: Wed Jun 23 10:25:57 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off guess_number -c guess_number
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file guess_final.vhd
+    Info (12022): Found design unit 1: guess_final-Structural File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 27
+    Info (12023): Found entity 1: guess_final File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file disp_select.vhd
+    Info (12022): Found design unit 1: disp_select-Behavioral File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 29
+    Info (12023): Found entity 1: disp_select File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file bin_to_bcd_fsm.vhd
+    Info (12022): Found design unit 1: bin_to_bcd_fsm-Behav File: C:/QuartosLsd/projfinal/bin_to_bcd_fsm.vhd Line: 20
+    Info (12023): Found entity 1: bin_to_bcd_fsm File: C:/QuartosLsd/projfinal/bin_to_bcd_fsm.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file guesss_number.vhd
+    Info (12022): Found design unit 1: guesss_number-Behavioral File: C:/QuartosLsd/projfinal/guesss_number.vhd Line: 36
+    Info (12023): Found entity 1: guesss_number File: C:/QuartosLsd/projfinal/guesss_number.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file bin7segdecoder.vhd
+    Info (12022): Found design unit 1: Bin7SegDecoder-Behavioral File: C:/QuartosLsd/projfinal/Bin7SegDecoder.vhd Line: 13
+    Info (12023): Found entity 1: Bin7SegDecoder File: C:/QuartosLsd/projfinal/Bin7SegDecoder.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file freqdivider.vhd
+    Info (12022): Found design unit 1: freqdivider-RTL File: C:/QuartosLsd/projfinal/freqdivider.vhd Line: 13
+    Info (12023): Found entity 1: freqdivider File: C:/QuartosLsd/projfinal/freqdivider.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file debouncer.vhd
+    Info (12022): Found design unit 1: Debouncer-Behavioral File: C:/QuartosLsd/projfinal/Debouncer.vhd Line: 16
+    Info (12023): Found entity 1: Debouncer File: C:/QuartosLsd/projfinal/Debouncer.vhd Line: 6
+Info (12021): Found 3 design units, including 1 entities, in source file pseudo_random_generator.vhd
+    Info (12022): Found design unit 1: pseudo_random_generator-heavy File: C:/QuartosLsd/projfinal/pseudo_random_generator.vhd Line: 40
+    Info (12022): Found design unit 2: pseudo_random_generator-light File: C:/QuartosLsd/projfinal/pseudo_random_generator.vhd Line: 1304
+    Info (12023): Found entity 1: pseudo_random_generator File: C:/QuartosLsd/projfinal/pseudo_random_generator.vhd Line: 23
+Info (12021): Found 2 design units, including 1 entities, in source file disp_select_tb.vhd
+    Info (12022): Found design unit 1: disp_select_tb-Stimulus File: C:/QuartosLsd/projfinal/disp_select_tb.vhd Line: 11
+    Info (12023): Found entity 1: disp_select_tb File: C:/QuartosLsd/projfinal/disp_select_tb.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file bintobcd_tb.vhd
+    Info (12022): Found design unit 1: bintobcd_tb-Stimulus File: C:/QuartosLsd/projfinal/bintobcd_tb.vhd Line: 11
+    Info (12023): Found entity 1: bintobcd_tb File: C:/QuartosLsd/projfinal/bintobcd_tb.vhd Line: 8
+Info (12127): Elaborating entity "guess_final" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at guess_final.vhd(14): used implicit default value for signal "LEDG" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 14
+Info (12129): Elaborating entity "freqdivider" using architecture "A:rtl" for hierarchy "freqdivider:freq_div1hz" File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 40
+Info (12129): Elaborating entity "freqdivider" using architecture "A:rtl" for hierarchy "freqdivider:freq_div2hz" File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 45
+Info (12129): Elaborating entity "freqdivider" using architecture "A:rtl" for hierarchy "freqdivider:freq_div4hz" File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 50
+Info (12129): Elaborating entity "freqdivider" using architecture "A:rtl" for hierarchy "freqdivider:freq_div8hz" File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 55
+Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "Debouncer:Debouncer0" File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 60
+Info (12129): Elaborating entity "pseudo_random_generator" using architecture "A:heavy" for hierarchy "pseudo_random_generator:rnd_08_gen" File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 80
+Info (12129): Elaborating entity "pseudo_random_generator" using architecture "A:heavy" for hierarchy "pseudo_random_generator:rnd_led_gen" File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 88
+Info (12129): Elaborating entity "guesss_number" using architecture "A:behavioral" for hierarchy "guesss_number:guess_number" File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 96
+Info (12129): Elaborating entity "bin_to_bcd_fsm" using architecture "A:behav" for hierarchy "bin_to_bcd_fsm:bin_to_bcd0" File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 121
+Info (12129): Elaborating entity "disp_select" using architecture "A:behavioral" for hierarchy "disp_select:disp_select" File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 139
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(34): signal "textin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 34
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(35): signal "textin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 35
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(36): signal "textin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 36
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(37): signal "textin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 37
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(38): signal "textin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 38
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(39): signal "textin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 39
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(40): signal "textin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 40
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(41): signal "textin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 41
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(43): signal "enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 43
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(44): signal "d7In" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 44
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(45): signal "d6In" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 45
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(46): signal "d5In" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 46
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(47): signal "d4In" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 47
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(48): signal "textin_s2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 48
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(49): signal "textin_s2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 49
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(50): signal "textin_s2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 50
+Warning (10492): VHDL Process Statement warning at disp_select.vhd(51): signal "textin_s2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/QuartosLsd/projfinal/disp_select.vhd Line: 51
+Info (12129): Elaborating entity "Bin7SegDecoder" using architecture "A:behavioral" for hierarchy "Bin7SegDecoder:bin7seg7" File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 158
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LEDG[0]" is stuck at GND File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 14
+    Warning (13410): Pin "LEDG[1]" is stuck at GND File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 14
+    Warning (13410): Pin "LEDG[2]" is stuck at GND File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 14
+    Warning (13410): Pin "LEDG[3]" is stuck at GND File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 14
+    Warning (13410): Pin "LEDG[4]" is stuck at GND File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 14
+    Warning (13410): Pin "LEDG[5]" is stuck at GND File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 14
+    Warning (13410): Pin "LEDG[6]" is stuck at GND File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 14
+    Warning (13410): Pin "LEDG[7]" is stuck at GND File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 14
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 76 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/QuartosLsd/projfinal/guess_final.vhd Line: 11
+Info (21057): Implemented 2002 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 8 input pins
+    Info (21059): Implemented 82 output pins
+    Info (21061): Implemented 1912 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 30 warnings
+    Info: Peak virtual memory: 4796 megabytes
+    Info: Processing ended: Wed Jun 23 10:26:14 2021
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:31
+
+
